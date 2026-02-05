@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'button.dart';
+import 'package:flutter_unit_test_public/buttons.dart';
+import 'counter.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,19 +11,33 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final counter = Counter();
+    
     return MaterialApp(
       home: Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center, 
           children: [
-            Button(
-              label: 'Click Me',
-              onPressed: () {
-                print('Button Pressed!');
-              },
-            ),
+            // Text('Counter: ${counter.counter}'),
 
-            const Center(child: Text('Hello World!')),
+            // SizedBox(height: 20.0,),
+          
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MinusButton(onPressed: () {
+                    counter.decrement();
+                  },
+                ),
+
+                SizedBox(width: 40.0),
+            
+                PlusButton(onPressed: () {
+                    counter.increment();
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ), 
